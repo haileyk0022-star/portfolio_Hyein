@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="550" viewBox="0 0 900 550" role="img" aria-labelledby="title desc">
+<title id="title">Vision AI 검사 운영 업무 요약</title><desc id="desc">검사 결과 검토, 관심 영역 조정, 판정 점검으로 이어지는 업무 설명용 도식</desc>
+<rect width="900" height="550" fill="#223138"/>
+<g fill="none" stroke="#91aaa3" stroke-width="2"><rect x="76" y="86" width="345" height="355" rx="10"/><path d="M120 130h65m-65 0v65m257-65h-65m65 0v65M120 397h65m-65 0v-65m257 65h-65m65 0v-65" stroke="#f39198" stroke-width="5"/><path d="m170 240 65-55h74l55 55v95H170z"/><rect x="225" y="240" width="80" height="60" stroke="#f39198" stroke-dasharray="7 6"/><path d="M421 266h74" stroke-dasharray="6 5"/></g>
+<g font-family="Malgun Gothic, sans-serif"><text x="76" y="55" fill="#f39198" font-size="16" letter-spacing="3">MANUFACTURING / VISION AI</text><text x="180" y="478" fill="#b8c9c3" font-size="17">검사 대상 · 관심 영역</text><g fill="#31434a"><rect x="510" y="110" width="310" height="90" rx="5"/><rect x="510" y="230" width="310" height="90" rx="5"/><rect x="510" y="350" width="310" height="90" rx="5"/></g><g fill="#f5f5ef" font-size="24"><text x="546" y="166">01  검사 결과 검토</text><text x="546" y="286">02  관심 영역 조정</text><text x="546" y="406">03  판정 결과 점검</text></g><text x="510" y="492" fill="#a6bdb5" font-size="14">업무 설명용 도식</text></g>
+</svg>
