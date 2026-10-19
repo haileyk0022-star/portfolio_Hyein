@@ -1,8 +1,8 @@
-# 곽혜인 | AX · DX 포트폴리오
+# 곽혜인 | SW 검증 포트폴리오
 
-> 현장의 문제를 이해하고, 데이터와 AI를 작동하는 서비스로 연결합니다.
+> 전자공학 기반의 시스템 이해와 서비스 구현 경험을 바탕으로, 동작 조건과 결과를 확인합니다.
 
-안녕하세요. 전자공학을 바탕으로 클라우드 PoC 구현, AI 서비스 기획, 데이터 분석과 제조 현장 경험을 쌓아온 **곽혜인**입니다. 사용자의 요구를 데이터와 기능으로 정의하고, 팀이 함께 구현할 수 있는 업무 흐름으로 구체화합니다. **AX·DX 기획 및 컨설팅** 직무를 목표로 합니다.
+안녕하세요. 전자공학을 바탕으로 시스템·서비스 구현과 제조 현장의 검사 운영을 경험한 **곽혜인**입니다. 클라우드 API·DB 연동과 임베디드 보드 연결을 점검하고, 로그·검사 판정·경고 출력을 통해 동작을 확인해 왔습니다. 이러한 경험을 바탕으로 **SW 검증** 직무를 목표로 합니다.
 
 **[웹 포트폴리오](https://haileyk0022-star.github.io/portfolio_Hyein/)** · **[GitHub](https://github.com/haileyk0022-star)** · **[이메일](mailto:haileyk0022@gmail.com)**
 
@@ -21,7 +21,7 @@
 | 항목 | 내용 |
 | --- | --- |
 | 이름 | 곽혜인 · Hyein Kwak |
-| 관심 직무 | AX·DX 기획 / 컨설팅 |
+| 관심 직무 | SW 검증 |
 | 전공 | 동아대학교 전자공학과 |
 | 주요 경험 | 차량 운영 클라우드 PoC, 개인화 AI 서비스 MVP, 공공데이터 대시보드, Vision AI 검사 운영 |
 
@@ -92,6 +92,8 @@
 [서비스 아키텍처](assets/yogeun-architecture.webp) · [웹 상세 보기](https://haileyk0022-star.github.io/portfolio_Hyein/#yogeun)
 
 [전자신문의 해커톤 현장 기사](https://www.etnews.com/20260908000216)에서 전체 대회 **186팀 지원·본선 8팀 선발** 규모를 확인할 수 있습니다. 해당 숫자는 전체 대회의 선발 규모입니다.
+
+관련 링크: [요기요 채용 블로그](https://blog.naver.com/yogiyo_recruit/224411126701)
 
 ### 3. D-Curb Guardian
 
@@ -206,7 +208,7 @@
 
 - **Email:** [haileyk0022@gmail.com](mailto:haileyk0022@gmail.com)
 - **GitHub:** [haileyk0022-star](https://github.com/haileyk0022-star)
-- **Portfolio:** [곽혜인 AX·DX 포트폴리오](https://haileyk0022-star.github.io/portfolio_Hyein/)
+- **Portfolio:** [곽혜인 SW 검증 포트폴리오](https://haileyk0022-star.github.io/portfolio_Hyein/)
 
 ---
 

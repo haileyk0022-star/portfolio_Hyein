@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="640" viewBox="0 0 1000 640" role="img" aria-labelledby="title desc">
+<title id="title">안전운전 보조 시스템 구조도</title><desc id="desc">발표자료에 제시된 카메라, Raspberry Pi, UART 통신, ATmega128, 음주 센서와 경고 출력의 연결 관계</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#526481"/></marker></defs>
+<rect width="1000" height="640" fill="#f5f7fb"/>
+<g font-family="Malgun Gothic, sans-serif" text-anchor="middle"><text x="500" y="58" font-size="27" font-weight="700" fill="#263550">시스템 구조</text><text x="500" y="91" font-size="14" fill="#67768d">영상 분석 · 상태 판단 · 통신 · 경고 출력</text>
+<g fill="white" stroke="#bdc9dc" stroke-width="2"><rect x="55" y="150" width="195" height="100" rx="8"/><rect x="330" y="150" width="330" height="100" rx="8"/><rect x="330" y="355" width="330" height="100" rx="8"/><rect x="55" y="355" width="195" height="100" rx="8"/><rect x="740" y="355" width="210" height="100" rx="8"/></g>
+<g fill="#263550" font-size="23" font-weight="700"><text x="152" y="194">카메라</text><text x="495" y="192">Raspberry Pi</text><text x="495" y="398">ATmega128</text><text x="152" y="398">음주 센서</text><text x="845" y="398">경고 출력</text></g>
+<g fill="#67768d" font-size="16"><text x="152" y="223">운전자 영상 입력</text><text x="495" y="223">얼굴·눈 상태 분석</text><text x="495" y="428">입력 판단 · 출력 제어</text><text x="152" y="428">상태 입력</text><text x="845" y="428">LED · 부저 · 모터</text></g>
+<g fill="none" stroke="#526481" stroke-width="3" marker-end="url(#arrow)"><path d="M250 200H319"/><path d="M495 250V344"/><path d="M250 405H319"/><path d="M660 405H729"/></g><text x="556" y="306" font-size="17" fill="#526481">UART 통신</text><text x="500" y="550" font-size="14" fill="#67768d">발표자료의 구성요소와 연결 관계를 정리한 도식</text></g></svg>
