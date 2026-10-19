@@ -1,5 +1,5 @@
 (() => {
- const projects = [...document.querySelectorAll('#projects > .project')];
+ const projects = [...document.querySelector('#project-library').content.children];
  const reader = document.querySelector('#project-reader');
  const body = reader.querySelector('.reader-body');
  const title = reader.querySelector('#reader-title');
@@ -30,8 +30,10 @@
  function renderProject(index, direction = 1) {
   currentIndex = Math.max(0, Math.min(projects.length - 1, index));
   const source = projects[currentIndex];
+  if (reader.open) history.replaceState(null, '', '#' + source.id);
   const copy = source.cloneNode(true);
   copy.hidden = false;
+  copy.querySelectorAll('details').forEach(detail => { detail.open = true; });
   // Prefix IDs and their label references so the full page remains valid while reading.
   const idMap = new Map();
   [copy, ...copy.querySelectorAll('[id]')].forEach(element => {
@@ -48,7 +50,7 @@
   body.replaceChildren(copy);
   body.scrollTop = 0;
   title.textContent = bookNames.get(source.id) || names[currentIndex];
-  status.textContent = `${currentIndex + 1} / ${projects.length} · 이 프로젝트만 읽고 있습니다`;
+  status.textContent = `${currentIndex + 1} / ${projects.length} · 선택한 경험을 읽고 있습니다`;
   previous.disabled = currentIndex === 0;
   next.disabled = currentIndex === projects.length - 1;
   reader.querySelectorAll('[data-reader-page]').forEach(button => {
@@ -96,19 +98,38 @@
    if (token === transitionToken) { transitionBusy = false; lockNavigation(false); }
   }
  }
+ function openProject(index, trigger) {
+  opener = trigger || document.querySelector(`[data-reader-open="${projects[index].id}"]`);
+  renderProject(index);
+  if (!reader.open) reader.showModal();
+  document.body.classList.add('reader-open');
+  history.replaceState(null, '', '#' + projects[index].id);
+ }
  document.querySelectorAll('[data-reader-open]').forEach(button => button.addEventListener('click', () => {
-  opener = button;
   const index = projects.findIndex(project => project.id === button.dataset.readerOpen);
-  renderProject(index < 0 ? 0 : index);
-  reader.showModal();
-  document.body.classList.add('reader-open');
+  if (index >= 0) openProject(index, button);
  }));
- document.querySelector('[data-reader-launch]').addEventListener('click', event => {
-  opener = event.currentTarget;
-  const firstVisible = projects.findIndex(project => !project.hidden);
-  renderProject(firstVisible < 0 ? 0 : firstVisible);
-  reader.showModal();
-  document.body.classList.add('reader-open');
+ document.querySelector('[data-reader-launch]').addEventListener('click', event => openProject(0, event.currentTarget));
+ function hashIndex(hash) {
+  const id = hash.replace(/^#/, '');
+  return projects.findIndex(project => project.id === id || [...project.querySelectorAll('[id]')].some(node => node.id === id));
+ }
+ document.addEventListener('click', event => {
+  const link = event.target.closest('a[href^="#"]');
+  if (!link) return;
+  const hash = link.getAttribute('href');
+  if (reader.contains(link)) {
+   const target = [...body.querySelectorAll('[id]')].find(node => '#' + node.id === hash);
+   if (target) { event.preventDefault(); target.scrollIntoView({ behavior: reducedMotion.matches ? 'instant' : 'smooth', block: 'start' }); }
+   return;
+  }
+  const index = hashIndex(hash);
+  if (index >= 0) { event.preventDefault(); openProject(index, link); }
+ });
+ window.addEventListener('hashchange', () => {
+  const index = hashIndex(location.hash);
+  if (index >= 0) openProject(index);
+  else if (reader.open && !document.querySelector('#lightbox').open) reader.close();
  });
  reader.querySelector('[data-reader-close]').addEventListener('click', () => reader.close());
  reader.addEventListener('close', () => {
@@ -118,7 +139,10 @@
   lockNavigation(false);
   document.body.classList.remove('reader-open');
   body.replaceChildren();
-  opener?.focus({ preventScroll: true });
+  history.replaceState(null, '', '#bookshelf');
+  const returnBook = opener?.matches('.project-book, .reader-launch') ? opener : document.querySelector(`[data-reader-open="${projects[currentIndex].id}"]`);
+  returnBook?.focus({ preventScroll: true });
+  document.querySelector('#bookshelf').scrollIntoView({ behavior: reducedMotion.matches ? 'instant' : 'smooth', block: 'start' });
  });
  previous.addEventListener('click', () => { if (currentIndex > 0) transitionProject(currentIndex - 1, -1); });
  next.addEventListener('click', () => { if (currentIndex < projects.length - 1) transitionProject(currentIndex + 1, 1); });
@@ -132,4 +156,6 @@
   if (event.key === 'ArrowRight' && currentIndex < projects.length - 1) { event.preventDefault(); transitionProject(currentIndex + 1, 1); }
  });
  updateReadState();
+ const initialIndex = hashIndex(location.hash);
+ if (initialIndex >= 0) openProject(initialIndex);
 })();

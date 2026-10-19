@@ -18,3 +18,5 @@
 
 /* Unify the article block and phone-screen image block surfaces. */
 .press-story,.press-story figure,.press-story figure>a,.phone-gallery,.phone-gallery figure,.phone-gallery .image-button,.phone-gallery img{background:#fff}
+
+.press-links{display:flex;flex-wrap:wrap;gap:8px 22px;align-items:flex-start}.press-links .source-link{max-width:100%}

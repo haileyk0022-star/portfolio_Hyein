@@ -17,13 +17,20 @@ document.querySelector('#copy-email').addEventListener('click', async () => {
  try { await navigator.clipboard.writeText('haileyk0022@gmail.com'); status.textContent='이메일을 복사했습니다.'; }
  catch { status.textContent='위 이메일 주소를 선택해 복사해 주세요.'; }
 });
-let previouslyOpen=[];
-let previouslyHidden=[];
-window.addEventListener('beforeprint',()=>{previouslyOpen=[...document.querySelectorAll('details')].filter(d=>d.open);document.querySelectorAll('details').forEach(d=>d.open=true);previouslyHidden=[...document.querySelectorAll('.project[hidden]')];previouslyHidden.forEach(p=>p.hidden=false);});
-window.addEventListener('afterprint',()=>{document.querySelectorAll('details').forEach(d=>d.open=previouslyOpen.includes(d));previouslyHidden.forEach(p=>p.hidden=true);});
+let printProjects;
+window.addEventListener('beforeprint', () => {
+ if (printProjects) return;
+ printProjects = document.createElement('div');
+ printProjects.id = 'print-projects';
+ printProjects.append(document.querySelector('#project-library').content.cloneNode(true));
+ printProjects.querySelectorAll('details').forEach(detail => { detail.open = true; });
+ document.querySelector('#projects').append(printProjects);
+});
+window.addEventListener('afterprint', () => { printProjects?.remove(); printProjects = null; });
+
 document.querySelector('#print').addEventListener('click',()=>window.print());
-const observer=new IntersectionObserver(entries=>{for(const e of entries){if(e.isIntersecting){document.querySelectorAll('nav a').forEach(a=>{const active=a.getAttribute('href')==='#'+e.target.id;a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});}}},{rootMargin:'-15% 0px -60% 0px'});
-['about','projects','experience','contact'].forEach(id=>observer.observe(document.getElementById(id)));
+const observer=new IntersectionObserver(entries=>{for(const e of entries){if(e.isIntersecting){document.querySelectorAll('#main-nav a').forEach(a=>{const active=a.getAttribute('href')==='#'+e.target.id;a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});}}},{rootMargin:'-15% 0px -60% 0px'});
+['about','bookshelf','experience','contact'].forEach(id=>observer.observe(document.getElementById(id)));
 
 const menuToggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('#main-nav');
@@ -47,28 +54,12 @@ document.addEventListener('keydown', event => {
 document.addEventListener('click', event => {
  if (!event.target.closest('.site-header')) closeMenu();
 });
-const filterButtons = [...document.querySelectorAll('[data-filter]')];
-const projectArticles = [...document.querySelectorAll('.project[data-category]')];
-function applyFilter(category) {
- filterButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.filter === category)));
- projectArticles.forEach(article => { article.hidden = category !== 'all' && article.dataset.category !== category; });
- document.querySelector('#filter-status').textContent = `${projectArticles.filter(article => !article.hidden).length}개 프로젝트`;
+// Image fallback also works for project pages cloned from the book library.
+function showPressPhotoFallback(photo) {
+ photo.hidden = true;
+ const fallback = photo.parentElement.querySelector('.press-photo-fallback');
+ if (fallback) fallback.hidden = false;
 }
-filterButtons.forEach(button => button.addEventListener('click', () => applyFilter(button.dataset.filter)));
-// Direct project links remain usable after selecting a category.
-function revealHashProject(hash) {
- const project = projectArticles.find(article => '#' + article.id === hash);
- if (project?.hidden) applyFilter('all');
-}
-document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', () => revealHashProject(link.getAttribute('href'))));
-window.addEventListener('hashchange', () => { revealHashProject(location.hash); });
-revealHashProject(location.hash);
-
-const pressPhoto = document.querySelector('.press-photo');
-function showPressPhotoFallback() {
- if (!pressPhoto) return;
- pressPhoto.hidden = true;
- document.querySelector('.press-photo-fallback').hidden = false;
-}
-pressPhoto?.addEventListener('error', showPressPhotoFallback);
-if (pressPhoto?.complete && pressPhoto.naturalWidth === 0) showPressPhotoFallback();
+document.addEventListener('error', event => {
+ if (event.target.matches?.('.press-photo')) showPressPhotoFallback(event.target);
+}, true);

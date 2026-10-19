@@ -13,3 +13,10 @@ body{background:#fffefa;line-height:1.85}h1,h2,h3,h4{text-wrap:balance}p{overflo
 @media(max-width:370px){.hero h1{font-size:38px}.wordmark span{display:none}.hero-meta{gap:12px}.system-step{gap:9px}.system-step h2{font-size:21px}.system-step p{font-size:10px}.button{font-size:11px;gap:18px}.project-index h3{font-size:23px}.filters button{padding:8px 11px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 @media print{.menu-toggle,.proof-strip,.project-index,.project-toolbar,.hero-actions,.hero-bottom{display:none!important}.hero-system{box-shadow:none;color:#111;background:#f0f0ed;border:1px solid #aaa;padding:15px;margin:0}.hero-system h2{color:#111}.hero-system p,.hero-system small,.system-top,.system-bottom{color:#333}.hero-inner{width:100%;grid-template-columns:1.1fr 1fr;gap:25px;min-height:0}.hero h1{font-size:30px}.hero-copy{padding:20px 0}.hero-meta{flex-direction:row}.system-step{padding:13px 0}.system-step h2{font-size:18px}.case-brief{grid-template-columns:1fr 1fr 1fr;break-inside:avoid}.case-brief>div:last-child{grid-column:auto;border-top:0}.case-brief b{font-size:10px}.project-top{break-after:avoid}.project-thesis{break-after:avoid}.validation-note{break-inside:avoid}.project{break-before:page}.projects,.hero{background:white}.section-heading h2{font-size:28px}.phone-gallery{grid-template-columns:repeat(4,1fr);gap:15px}.phone-gallery img{height:210px}.contact-inner{display:grid;grid-template-columns:130px 1fr;padding:20px 0}.contact-inner>img{width:120px}.case-detail{break-inside:auto}}
+
+/* Intro without the process panel. */
+.hero-simple .hero-inner{grid-template-columns:minmax(0,1fr);min-height:auto;gap:0}
+.hero-simple .hero-copy{width:100%;max-width:950px;padding:80px 0 65px}
+.hero-simple .hero-description{max-width:650px}
+@media(max-width:700px){.hero-simple .hero-copy{padding:48px 0 40px}}
+@media print{.hero-simple .hero-copy{padding:25px 0}}
