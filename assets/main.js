@@ -1,15 +1,17 @@
 const modal = document.querySelector('#lightbox');
 let imageTrigger;
-document.querySelectorAll('[data-image]').forEach(button => button.addEventListener('click', () => {
+document.addEventListener('click', event => {
+ const button = event.target.closest('[data-image]');
+ if (!button) return;
  imageTrigger = button;
  modal.querySelector('img').src = button.dataset.image;
  modal.querySelector('img').alt = button.dataset.caption;
  modal.querySelector('p').textContent = button.dataset.caption;
  modal.showModal(); document.body.classList.add('modal-open');
-}));
+});
 modal.querySelector('button').addEventListener('click', () => modal.close());
 modal.addEventListener('click', event => { if(event.target === modal) { const rect=modal.getBoundingClientRect(); if(event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) modal.close(); } });
-modal.addEventListener('close', () => { document.body.classList.remove('modal-open'); imageTrigger?.focus(); });
+modal.addEventListener('close', () => { document.body.classList.remove('modal-open'); imageTrigger?.focus({preventScroll:true}); });
 document.querySelector('#copy-email').addEventListener('click', async () => {
  const status = document.querySelector('#copy-status');
  try { await navigator.clipboard.writeText('haileyk0022@gmail.com'); status.textContent='이메일을 복사했습니다.'; }

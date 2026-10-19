@@ -136,7 +136,7 @@
 - 출원번호: **10-2025-0002927**
 - 확인 범위: 프로토타입의 감지·통신·경고 기능 연동
 
-[시스템 구조도](assets/safety-structure.svg) · [출원 명세서 도면](assets/patent-drawing-page.webp) · [웹 상세 보기](https://haileyk0022-star.github.io/portfolio_Hyein/#smart-safety)
+[시스템 구조도](assets/safety-structure.svg) · [출원 명세서 청구범위](patent-claims.html) · [웹 상세 보기](https://haileyk0022-star.github.io/portfolio_Hyein/#smart-safety)
 
 ### 5. Bon Appétit
 
@@ -211,3 +211,5 @@
 ---
 
 웹사이트 실행·업로드 방법은 [배포 안내](DEPLOYMENT.md), 이미지별 원본 정보는 [이미지 출처](이미지-출처.md)에 정리했습니다.
+
+웹 포트폴리오에서는 책장형 목차에서 원하는 프로젝트를 골라 읽거나, 슬라이드 보기의 이전·다음 버튼으로 사례를 넘겨볼 수 있습니다.
