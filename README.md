@@ -1,8 +1,8 @@
-# 곽혜인 | SW 검증 포트폴리오
+# 곽혜인 | 포트폴리오
 
 > 전자공학 기반의 시스템 이해와 서비스 구현 경험을 바탕으로, 동작 조건과 결과를 확인합니다.
 
-안녕하세요. 전자공학을 바탕으로 시스템·서비스 구현과 제조 현장의 검사 운영을 경험한 **곽혜인**입니다. 클라우드 API·DB 연동과 임베디드 보드 연결을 점검하고, 로그·검사 판정·경고 출력을 통해 동작을 확인해 왔습니다. 이러한 경험을 바탕으로 **SW 검증** 직무를 목표로 합니다.
+안녕하세요. 전자공학을 바탕으로 시스템·서비스 구현과 제조 현장의 검사 운영을 경험한 **곽혜인**입니다. 클라우드 API·DB 연동과 임베디드 보드 연결을 점검하고, 로그·검사 판정·경고 출력을 통해 동작을 확인해 왔습니다. 시스템 구현·서비스 연동·동작 확인 경험을 바탕으로 기술과 현장의 문제를 연결합니다.
 
 **[웹 포트폴리오](https://haileyk0022-star.github.io/portfolio_Hyein/)** · **[GitHub](https://github.com/haileyk0022-star)** · **[이메일](mailto:haileyk0022@gmail.com)**
 
@@ -21,7 +21,7 @@
 | 항목 | 내용 |
 | --- | --- |
 | 이름 | 곽혜인 · Hyein Kwak |
-| 관심 직무 | SW 검증 |
+| 주요 경험 | 시스템 구현 · 서비스 연동 · 동작 확인 |
 | 전공 | 동아대학교 전자공학과 |
 | 주요 경험 | 차량 운영 클라우드 PoC, 개인화 AI 서비스 MVP, 공공데이터 대시보드, Vision AI 검사 운영 |
 
@@ -208,7 +208,7 @@
 
 - **Email:** [haileyk0022@gmail.com](mailto:haileyk0022@gmail.com)
 - **GitHub:** [haileyk0022-star](https://github.com/haileyk0022-star)
-- **Portfolio:** [곽혜인 SW 검증 포트폴리오](https://haileyk0022-star.github.io/portfolio_Hyein/)
+- **Portfolio:** [곽혜인 포트폴리오](https://haileyk0022-star.github.io/portfolio_Hyein/)
 
 ---
 
