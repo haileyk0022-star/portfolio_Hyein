@@ -33,7 +33,21 @@
   if (reader.open) history.replaceState(null, '', '#' + source.id);
   const copy = source.cloneNode(true);
   copy.hidden = false;
-  copy.querySelectorAll('details').forEach(detail => { detail.open = true; });
+  // A book opens the complete case directly, without another disclosure step.
+  copy.querySelectorAll('details').forEach(detail => {
+   const section = document.createElement('section');
+   section.className = 'case-detail case-process';
+   const heading = document.createElement('h4');
+   heading.textContent = detail.querySelector('summary').childNodes[0].textContent.trim().replace(' 자세히 보기', '');
+   section.append(heading, ...[...detail.children].filter(child => child.tagName !== 'SUMMARY'));
+   detail.replaceWith(section);
+  });
+  // Role and evidence already appear in the introduction and result blocks.
+  copy.querySelector('.case-brief')?.remove();
+  copy.querySelector('.key-description')?.remove();
+  const outcomes = copy.querySelector('.outcome-grid');
+  const introduction = copy.querySelector('.project-intro');
+  if (outcomes && introduction) introduction.after(outcomes);
   // Prefix IDs and their label references so the full page remains valid while reading.
   const idMap = new Map();
   [copy, ...copy.querySelectorAll('[id]')].forEach(element => {
@@ -98,12 +112,19 @@
    if (token === transitionToken) { transitionBusy = false; lockNavigation(false); }
   }
  }
- function openProject(index, trigger) {
+ function openProject(index, trigger, targetHash) {
   opener = trigger || document.querySelector(`[data-reader-open="${projects[index].id}"]`);
   renderProject(index);
   if (!reader.open) reader.showModal();
   document.body.classList.add('reader-open');
-  history.replaceState(null, '', '#' + projects[index].id);
+  const targetId = targetHash?.replace(/^#/, '');
+  const target = targetId && body.querySelector('#reader-' + CSS.escape(targetId));
+  history.replaceState(null, '', target ? targetHash : '#' + projects[index].id);
+  if (target && targetId !== projects[index].id) {
+   target.tabIndex = -1;
+   target.focus({ preventScroll: true });
+   target.scrollIntoView({ behavior: 'instant', block: 'start' });
+  }
  }
  document.querySelectorAll('[data-reader-open]').forEach(button => button.addEventListener('click', () => {
   const index = projects.findIndex(project => project.id === button.dataset.readerOpen);
@@ -124,11 +145,11 @@
    return;
   }
   const index = hashIndex(hash);
-  if (index >= 0) { event.preventDefault(); openProject(index, link); }
+  if (index >= 0) { event.preventDefault(); openProject(index, link, hash); }
  });
  window.addEventListener('hashchange', () => {
   const index = hashIndex(location.hash);
-  if (index >= 0) openProject(index);
+  if (index >= 0) openProject(index, undefined, location.hash);
   else if (reader.open && !document.querySelector('#lightbox').open) reader.close();
  });
  reader.querySelector('[data-reader-close]').addEventListener('click', () => reader.close());
@@ -157,5 +178,5 @@
  });
  updateReadState();
  const initialIndex = hashIndex(location.hash);
- if (initialIndex >= 0) openProject(initialIndex);
+ if (initialIndex >= 0) openProject(initialIndex, undefined, location.hash);
 })();
